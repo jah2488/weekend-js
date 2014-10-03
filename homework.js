@@ -27,7 +27,7 @@
 
 
 // QUESTION THREE
-// Show me how find the item with a "GBP" curreny code and print its name and price. Please console.log the one you find.
+// Show me how find the item with a "GBP" currency code and print its name and price. Please console.log the one you find.
 // The output should be "1970s Schlitz Malt Liquor Glass Beer Pitcher costs Â£18"
 
 
@@ -1120,6 +1120,7 @@ for (var i = 0; i < items.length; i++) {
   listItemPrices(items[i]);
 }
 */
+/*----------- Question 1 ---------*/
 
 var totalledPrices = items.reduce(function (previous, current) {
    return previous + current.price;
@@ -1134,8 +1135,29 @@ console.log('The superspecific answer is ' + averagePrice);
 console.log('The price rounded is ' + Math.round(averagePrice));
  //console.log(items.map(listItemPrices)) */
 
+/*----------- Question 2 ---------*/
+
 var sortedPrices = items.filter(function (item) {
    return item.price > 14 && item.price < 18;
  });
+
 console.log(sortedPrices.length);
-console.log('These objects matter', sortedPrices[0].title, sortedPrices[1].title, sortedPrices[2].title);
+
+sortedPrices.forEach(function(prices){
+  console.log(prices.title);
+});
+
+/** for each? **/
+/*----------- Question 3 ---------*/
+
+var sortedCurrency = items.filter(function (item) {
+   return item.currency_code === 'GBP';
+ });
+
+var sortedCurrency = sortedCurrency[0];
+
+console.log(sortedCurrency.title,
+            sortedCurrency.price,
+            sortedCurrency.currency_code);
+
+/*----------- Question 4 ---------*/
