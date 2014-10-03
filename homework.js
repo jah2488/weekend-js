@@ -3,7 +3,7 @@
 // QUESTION ONE
 // Show me how to calculate the average price of all items. Please console.log the average.
 // The output should be "The average price is $23.62"
-console.error('hello world');
+
 
 // QUESTION TWO
 // Show me how to get an array of items that cost between $14.00 and $18.00 USD
@@ -1106,3 +1106,36 @@ var items = [{
   "has_variations": false,
   "used_manufacturer": false
 }]
+
+
+
+//console.log(items[0].price);
+
+/*var listItemPrices = function (item) {
+  console.log(item.price);
+  return item.price;
+}
+
+for (var i = 0; i < items.length; i++) {
+  listItemPrices(items[i]);
+}
+*/
+
+var totalledPrices = items.reduce(function (previous, current) {
+   return previous + current.price;
+}, 0);
+
+console.log('The total sum is ' + totalledPrices);
+
+var averagePrice = totalledPrices / items.length;
+
+console.log('The superspecific answer is ' + averagePrice);
+
+console.log('The price rounded is ' + Math.round(averagePrice));
+ //console.log(items.map(listItemPrices)) */
+
+var sortedPrices = items.filter(function (item) {
+   return item.price > 14 && item.price < 18;
+ });
+console.log(sortedPrices.length);
+console.log('These objects matter', sortedPrices[0].title, sortedPrices[1].title, sortedPrices[2].title);
