@@ -1161,3 +1161,9 @@ console.log(sortedCurrency.title,
             sortedCurrency.currency_code);
 
 /*----------- Question 4 ---------*/
+
+var filMat = items.filter(function (item) {
+   return item.materials === 'wood';
+ });
+
+console.log(filMat);
