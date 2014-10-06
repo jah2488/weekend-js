@@ -1139,15 +1139,13 @@ console.log('The price rounded is ' + Math.round(averagePrice));
 
 var sortedPrices = items.filter(function (item) {
    return item.price > 14 && item.price < 18;
- });
-
-console.log(sortedPrices.length);
-
-sortedPrices.forEach(function(prices){
-  console.log(prices.title);
 });
 
-/** for each? **/
+sortedPrices.forEach(function(prices){
+  console.log('questions: 2 ' + prices.title);
+});
+
+
 /*----------- Question 3 ---------*/
 
 var sortedCurrency = items.filter(function (item) {
@@ -1163,7 +1161,45 @@ console.log(sortedCurrency.title,
 /*----------- Question 4 ---------*/
 
 var filMat = items.filter(function (item) {
-   return item.materials === 'wood';
+   var itemMaterials = item.materials.filter(function (material) {
+     return (material === 'wood');
+   });
+     return itemMaterials.length > 0;
  });
 
-console.log(filMat);
+var usingMap = filMat.map(function (filMat) {
+  return filMat.title;
+});
+
+usingMap.forEach(function(item) {
+  console.log(item + " wood.");
+});
+
+/*----------- Question 5 ---------*/
+
+var moreThanEight = items.filter(function(item) {
+  return (item.materials.length > 8);
+});
+
+var moreEightTitle = moreThanEight.map(function(moreThan) {
+  return (moreThanEight.title);
+});
+
+console.log (moreThanEight);
+moreThanEight.forEach(function(item) {
+  console.log(item.title);
+  item.materials.forEach(function(mat) {
+    console.log(mat);
+  });
+});
+
+
+/*----------- Question 6 ---------*/
+
+
+var madeBySeller = items.filter(function(item) {
+  return item.who_made === "i_did";
+});
+/* return targets who_made class and compares to class */
+
+console.log(madeBySeller.length + " were made by the sellers.");
