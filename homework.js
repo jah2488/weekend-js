@@ -1122,9 +1122,14 @@ for (var i = 0; i < items.length; i++) {
 */
 /*----------- Question 1 ---------*/
 
+
+/* --- old code
 var totalledPrices = items.reduce(function (previous, current) {
    return previous + current.price;
 }, 0);
+*/
+var totalledPrices = _.reduce(items, function(previous, current){
+  return previous + current.price; }, 0);
 
 console.log('The total sum is ' + totalledPrices);
 
@@ -1133,63 +1138,59 @@ var averagePrice = totalledPrices / items.length;
 console.log('The superspecific answer is ' + averagePrice);
 
 console.log('The price rounded is ' + Math.round(averagePrice));
- //console.log(items.map(listItemPrices)) */
+
 
 /*----------- Question 2 ---------*/
+var sortedPrices = _.filter(items, function(item){
+  return item.price > 14 && item.price < 18; });
 
-var sortedPrices = items.filter(function (item) {
-   return item.price > 14 && item.price < 18;
-});
 
 sortedPrices.forEach(function(prices){
-  console.log('questions: 2 ' + prices.title);
+  console.log('Question 2: ' + prices.title);
 });
 
 
 /*----------- Question 3 ---------*/
 
-var sortedCurrency = items.filter(function (item) {
-   return item.currency_code === 'GBP';
- });
+var sortedCurrency = _.filter(items, function (item) {
+   return item.currency_code === 'GBP'; });
 
 var sortedCurrency = sortedCurrency[0];
 
-console.log(sortedCurrency.title,
+console.log(
+            'Question 3: ' +
+            sortedCurrency.title,
             sortedCurrency.price,
             sortedCurrency.currency_code);
 
 /*----------- Question 4 ---------*/
 
-var filMat = items.filter(function (item) {
-   var itemMaterials = item.materials.filter(function (material) {
+var filMat = _.filter(items, function (item) {
+   var itemMaterials = _.filter(item.materials, function (material) {
      return (material === 'wood');
    });
      return itemMaterials.length > 0;
  });
 
-var usingMap = filMat.map(function (filMat) {
-  return filMat.title;
-});
+var usingMap = _.map(filMat, function(filMat){ return filMat.title; });
 
 usingMap.forEach(function(item) {
-  console.log(item + " wood.");
+  console.log('Question 4: ' + item + " made with wood.");
 });
 
 /*----------- Question 5 ---------*/
 
-var moreThanEight = items.filter(function(item) {
+var moreThanEight = _.filter(items,function(item) {
   return (item.materials.length > 8);
 });
 
-var moreEightTitle = moreThanEight.map(function(moreThan) {
-  return (moreThanEight.title);
-});
-
-console.log (moreThanEight);
+var moreEightTitle = _.map(moreThanEight, function(){
+  return moreThanEight.title; });
+// was going for forEach here but are the not the same? _.each??
 moreThanEight.forEach(function(item) {
-  console.log(item.title);
-  item.materials.forEach(function(mat) {
-    console.log(mat);
+  console.log('Question Five Title: ' + item.title);
+   item.materials.forEach(function(mat) {
+    console.log('Materials: ' + mat);
   });
 });
 
@@ -1197,9 +1198,9 @@ moreThanEight.forEach(function(item) {
 /*----------- Question 6 ---------*/
 
 
-var madeBySeller = items.filter(function(item) {
+var madeBySeller = _.filter(items, function(item) {
   return item.who_made === "i_did";
 });
 /* return targets who_made class and compares to class */
 
-console.log(madeBySeller.length + " were made by the sellers.");
+console.log('Question 6: ' + madeBySeller.length + " were made by the sellers.");
