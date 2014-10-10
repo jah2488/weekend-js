@@ -1129,7 +1129,8 @@ var totalledPrices = items.reduce(function (previous, current) {
 }, 0);
 */
 var totalledPrices = _.reduce(items, function(previous, current){
-  return previous + current.price; }, 0);
+  return previous + current.price; 
+}, 0);
 
 console.log('The total sum is ' + totalledPrices);
 
@@ -1167,14 +1168,15 @@ console.log(
 
 var filMat = _.filter(items, function (item) {
    var itemMaterials = _.filter(item.materials, function (material) {
-     return (material === 'wood');
+     return (material === 'wood'); //-> You could make this whole filter much easier using some underscore fns
+                                  //http://underscorejs.org/#contains
    });
      return itemMaterials.length > 0;
  });
 
 var usingMap = _.map(filMat, function(filMat){ return filMat.title; });
 
-usingMap.forEach(function(item) {
+usingMap.forEach(function(item) { // No _.each()? :[
   console.log('Question 4: ' + item + " made with wood.");
 });
 
@@ -1185,8 +1187,13 @@ var moreThanEight = _.filter(items,function(item) {
 });
 
 var moreEightTitle = _.map(moreThanEight, function(){
-  return moreThanEight.title; });
+  return moreThanEight.title; 
+  
+});
 // was going for forEach here but are the not the same? _.each??
+// JH -  ^^ what? http://underscorejs.org/#collections
+// """each_.each(list, iteratee, [context]) Alias: forEach"""
+
 moreThanEight.forEach(function(item) {
   console.log('Question Five Title: ' + item.title);
    item.materials.forEach(function(mat) {
@@ -1194,6 +1201,14 @@ moreThanEight.forEach(function(item) {
   });
 });
 
+/*
+_.each(moreThanEight, function (item) {
+  console.log();
+  _.each(item.materials, function (mat) {
+    console.log();
+  });
+});
+*/
 
 /*----------- Question 6 ---------*/
 
